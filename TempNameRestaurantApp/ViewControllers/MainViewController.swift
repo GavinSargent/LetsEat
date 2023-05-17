@@ -20,6 +20,8 @@ class MainViewController: UIViewController {
     let titleLabel = TitleLabel()
     let pickDinnerButton = PickDinnerButton()
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,29 +56,21 @@ class MainViewController: UIViewController {
             stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         
+        
+        let buttonView = UIView()
+        
         stackView.addArrangedSubview(titleLabel)
-        
-//        NSLayoutConstraint.activate([
-//            titleLabel.heightAnchor.constraint(equalToConstant: 45)
-//        ])
-        
         stackView.addArrangedSubview(foodPickerView)
-        
-//        NSLayoutConstraint.activate([
-//            foodPickerView.heightAnchor.constraint(equalToConstant: 10)
-//        ])
-        
         stackView.addArrangedSubview(pricePickerView)
+        stackView.addArrangedSubview(buttonView)
+
         
-//        NSLayoutConstraint.activate([
-//            pricePickerView.heightAnchor.constraint(equalToConstant: 10)
-//        ])
+        buttonView.addSubview(pickDinnerButton)
         
-        stackView.addArrangedSubview(pickDinnerButton)
-        
-//        NSLayoutConstraint.activate([
-//            pickDinnerButton.heightAnchor.constraint(equalToConstant: 10)
-//        ])
+        NSLayoutConstraint.activate([
+            pickDinnerButton.centerXAnchor.constraint(equalTo: buttonView.centerXAnchor),
+            pickDinnerButton.centerYAnchor.constraint(equalTo: buttonView.centerYAnchor)
+        ])
 
     }
 

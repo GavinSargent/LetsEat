@@ -20,7 +20,9 @@ class PickDinnerButton: UIButton {
         configuration?.baseForegroundColor = .white
         configuration?.title = "Pick Dinner"
         configuration?.cornerStyle = .capsule
+        configuration?.buttonSize = .large
         translatesAutoresizingMaskIntoConstraints = false
+        
     }
     
     required init?(coder: NSCoder) {
