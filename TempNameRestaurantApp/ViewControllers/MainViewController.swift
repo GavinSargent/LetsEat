@@ -39,10 +39,13 @@ class MainViewController: UIViewController {
     
     private func configureViews () {
         let stackView = UIStackView()
-        stackView.spacing = 10
-        stackView.distribution = .equalSpacing
+//        stackView.spacing = 10
+        stackView.distribution = .fillEqually
         stackView.axis = .vertical
+        stackView.backgroundColor = .red
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(stackView)
         
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
@@ -53,20 +56,28 @@ class MainViewController: UIViewController {
         
         stackView.addArrangedSubview(titleLabel)
         
-        NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
-            titleLabel.topAnchor.constraint(equalTo: stackView.topAnchor)
-        ])
+//        NSLayoutConstraint.activate([
+//            titleLabel.heightAnchor.constraint(equalToConstant: 45)
+//        ])
         
         stackView.addArrangedSubview(foodPickerView)
         
-        NSLayoutConstraint.activate([
-            foodPickerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5)
-        ])
+//        NSLayoutConstraint.activate([
+//            foodPickerView.heightAnchor.constraint(equalToConstant: 10)
+//        ])
         
+        stackView.addArrangedSubview(pricePickerView)
         
-        view.addSubview(stackView)
+//        NSLayoutConstraint.activate([
+//            pricePickerView.heightAnchor.constraint(equalToConstant: 10)
+//        ])
+        
+        stackView.addArrangedSubview(pickDinnerButton)
+        
+//        NSLayoutConstraint.activate([
+//            pickDinnerButton.heightAnchor.constraint(equalToConstant: 10)
+//        ])
+
     }
 
     

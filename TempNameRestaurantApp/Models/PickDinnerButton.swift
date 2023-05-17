@@ -10,7 +10,7 @@ import UIKit
 class PickDinnerButton: UIButton {
 
     override init(frame: CGRect) {
-        super.init(frame: .zero)
+        super.init(frame: frame)
         configureButton()
     }
 
