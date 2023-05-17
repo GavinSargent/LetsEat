@@ -15,13 +15,14 @@ class MainViewController: UIViewController {
     let price: [String] = ["$", "$$", "$$$", "$$$$"]
     
     let foodPickerView = PickerView(tag: 0)
-    let pricePickerView = PickerView(tag: 0)
+    let pricePickerView = PickerView(tag: 1)
     
     let titleLabel = TitleLabel()
     let pickDinnerButton = PickDinnerButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureViewController()
         configureViews()
         
@@ -42,7 +43,6 @@ class MainViewController: UIViewController {
 //        stackView.spacing = 10
         stackView.distribution = .fillEqually
         stackView.axis = .vertical
-        stackView.backgroundColor = .red
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(stackView)
@@ -89,6 +89,13 @@ extension MainViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         return 1
     }
     
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView.tag == 0 {
+            return typesOfFood[row]
+        } else{
+            return price[row]
+        }
+    }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.tag == 0 {
             return typesOfFood.count
