@@ -1,28 +1,27 @@
 //
-//  PickDinnerButton.swift
+//  StartButton.swift
 //  TempNameRestaurantApp
 //
-//  Created by Gavin Sargent on 5/16/23.
+//  Created by Gavin Sargent on 5/18/23.
 //
 
 import UIKit
 
-class PickDinnerButton: UIButton {
+class StartButton: UIButton {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureButton()
     }
-
+    
     private func configureButton() {
         configuration = .filled()
-        configuration?.baseBackgroundColor = .black
-        configuration?.baseForegroundColor = .white
-        configuration?.title = "Pick Dinner"
+        configuration?.baseBackgroundColor = UIColor(named: "systemCyan")
+        configuration?.baseForegroundColor = .black
+        configuration?.title = "Begin"
         configuration?.cornerStyle = .capsule
-        configuration?.buttonSize = .large
-        translatesAutoresizingMaskIntoConstraints = false
         
+        translatesAutoresizingMaskIntoConstraints = false
     }
     
     required init?(coder: NSCoder) {

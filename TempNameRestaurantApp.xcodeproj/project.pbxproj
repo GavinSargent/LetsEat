@@ -10,13 +10,14 @@
 		A515D3662A12C0A400B21C93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A515D3652A12C0A400B21C93 /* AppDelegate.swift */; };
 		A515D3682A12C0A400B21C93 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A515D3672A12C0A400B21C93 /* SceneDelegate.swift */; };
 		A515D36A2A12C0A400B21C93 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A515D3692A12C0A400B21C93 /* MainViewController.swift */; };
-		A515D36D2A12C0A400B21C93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A515D36B2A12C0A400B21C93 /* Main.storyboard */; };
 		A515D36F2A12C0A500B21C93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A515D36E2A12C0A500B21C93 /* Assets.xcassets */; };
 		A515D3722A12C0A500B21C93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A515D3702A12C0A500B21C93 /* LaunchScreen.storyboard */; };
 		A515D37A2A12C0DB00B21C93 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A515D3792A12C0DB00B21C93 /* StartViewController.swift */; };
 		A515D37D2A13E62700B21C93 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A515D37C2A13E62700B21C93 /* PickerView.swift */; };
 		A515D3802A141D9700B21C93 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A515D37F2A141D9700B21C93 /* TitleLabel.swift */; };
 		A515D3822A14241700B21C93 /* PickDinnerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A515D3812A14241700B21C93 /* PickDinnerButton.swift */; };
+		A5E4E0F62A16C1F100C0EDFC /* StartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E4E0F52A16C1F100C0EDFC /* StartButton.swift */; };
+		A5E4E0F92A16CEF300C0EDFC /* RestaurantOrFastFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E4E0F82A16CEF300C0EDFC /* RestaurantOrFastFood.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,7 +25,6 @@
 		A515D3652A12C0A400B21C93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A515D3672A12C0A400B21C93 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A515D3692A12C0A400B21C93 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		A515D36C2A12C0A400B21C93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A515D36E2A12C0A500B21C93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A515D3712A12C0A500B21C93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A515D3732A12C0A500B21C93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -32,6 +32,8 @@
 		A515D37C2A13E62700B21C93 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		A515D37F2A141D9700B21C93 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		A515D3812A14241700B21C93 /* PickDinnerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickDinnerButton.swift; sourceTree = "<group>"; };
+		A5E4E0F52A16C1F100C0EDFC /* StartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartButton.swift; sourceTree = "<group>"; };
+		A5E4E0F82A16CEF300C0EDFC /* RestaurantOrFastFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantOrFastFood.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,9 +68,8 @@
 			children = (
 				A515D3652A12C0A400B21C93 /* AppDelegate.swift */,
 				A515D3672A12C0A400B21C93 /* SceneDelegate.swift */,
-				A515D37E2A13E63300B21C93 /* Models */,
+				A515D37E2A13E63300B21C93 /* Elements */,
 				A515D37B2A12D64400B21C93 /* ViewControllers */,
-				A515D36B2A12C0A400B21C93 /* Main.storyboard */,
 				A515D36E2A12C0A500B21C93 /* Assets.xcassets */,
 				A515D3702A12C0A500B21C93 /* LaunchScreen.storyboard */,
 				A515D3732A12C0A500B21C93 /* Info.plist */,
@@ -85,14 +86,32 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		A515D37E2A13E63300B21C93 /* Models */ = {
+		A515D37E2A13E63300B21C93 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
-				A515D37C2A13E62700B21C93 /* PickerView.swift */,
+				A5E4E0F42A16C1A200C0EDFC /* MainView */,
+				A5E4E0F72A16C1F600C0EDFC /* StartView */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
+		A5E4E0F42A16C1A200C0EDFC /* MainView */ = {
+			isa = PBXGroup;
+			children = (
 				A515D37F2A141D9700B21C93 /* TitleLabel.swift */,
 				A515D3812A14241700B21C93 /* PickDinnerButton.swift */,
+				A515D37C2A13E62700B21C93 /* PickerView.swift */,
+				A5E4E0F82A16CEF300C0EDFC /* RestaurantOrFastFood.swift */,
 			);
-			path = Models;
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		A5E4E0F72A16C1F600C0EDFC /* StartView */ = {
+			isa = PBXGroup;
+			children = (
+				A5E4E0F52A16C1F100C0EDFC /* StartButton.swift */,
+			);
+			path = StartView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,7 +174,6 @@
 			files = (
 				A515D3722A12C0A500B21C93 /* LaunchScreen.storyboard in Resources */,
 				A515D36F2A12C0A500B21C93 /* Assets.xcassets in Resources */,
-				A515D36D2A12C0A400B21C93 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,21 +190,15 @@
 				A515D3682A12C0A400B21C93 /* SceneDelegate.swift in Sources */,
 				A515D3802A141D9700B21C93 /* TitleLabel.swift in Sources */,
 				A515D37D2A13E62700B21C93 /* PickerView.swift in Sources */,
+				A5E4E0F62A16C1F100C0EDFC /* StartButton.swift in Sources */,
 				A515D37A2A12C0DB00B21C93 /* StartViewController.swift in Sources */,
+				A5E4E0F92A16CEF300C0EDFC /* RestaurantOrFastFood.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A515D36B2A12C0A400B21C93 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A515D36C2A12C0A400B21C93 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A515D3702A12C0A500B21C93 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -322,9 +334,9 @@
 				DEVELOPMENT_TEAM = PYJTS2FY9Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TempNameRestaurantApp/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location is used to find restaurants within 25 miles of the user's current location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -350,9 +362,9 @@
 				DEVELOPMENT_TEAM = PYJTS2FY9Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TempNameRestaurantApp/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location is used to find restaurants within 25 miles of the user's current location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
