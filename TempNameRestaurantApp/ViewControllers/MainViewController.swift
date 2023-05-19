@@ -19,7 +19,7 @@ class MainViewController: UIViewController {
     let pricePickerView = PickerView(tag: 1)
     
     let stackView = UIStackView()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,8 +45,9 @@ class MainViewController: UIViewController {
         let mainTitleLabel = TitleLabel()
         
         
-//        stackView.spacing = 10
-        stackView.distribution = .fillEqually
+        //        stackView.spacing = 10
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 5
         stackView.axis = .vertical
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -56,14 +57,14 @@ class MainViewController: UIViewController {
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5),
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         ])
- 
+        
         stackView.addArrangedSubview(mainTitleLabel)
         stackView.addArrangedSubview(foodPickerView)
         stackView.addArrangedSubview(pricePickerView)
         
-        configureSitOrGoButtonViews()
+        configureSitOrGoSegControlView()
         configureDinnerButtonView()
     }
     
@@ -73,7 +74,7 @@ class MainViewController: UIViewController {
         let buttonView = UIView()
         
         stackView.addArrangedSubview(buttonView)
-
+        
         buttonView.addSubview(pickDinnerButton)
         
         NSLayoutConstraint.activate([
@@ -82,21 +83,19 @@ class MainViewController: UIViewController {
         ])
     }
     
-    func configureSitOrGoButtonViews (){
-        let buttonStackView = UIStackView()
+    func configureSitOrGoSegControlView (){
+        let items = ["Restaurant", "Fast Food"]
+        let segmentedControl = UISegmentedControl(items: items)
+        segmentedControl.selectedSegmentTintColor = .systemBlue
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         
-        buttonStackView.distribution = .fillEqually
+        stackView.addArrangedSubview(segmentedControl)
         
-        let restaurantButton = RestaurantOrFastFood(title: "Restaurant")
-        let fastFoodButton = RestaurantOrFastFood(title: "Fast Food")
-        
-        buttonStackView.addArrangedSubview(fastFoodButton)
-        buttonStackView.addArrangedSubview(restaurantButton)
-        
-        stackView.addArrangedSubview(buttonStackView)
-
+        NSLayoutConstraint.activate([
+            segmentedControl.heightAnchor.constraint(greaterThanOrEqualToConstant: 20)
+        ])
     }
-
+    
     
 }
 

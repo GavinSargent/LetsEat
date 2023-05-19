@@ -17,7 +17,6 @@
 		A515D3802A141D9700B21C93 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A515D37F2A141D9700B21C93 /* TitleLabel.swift */; };
 		A515D3822A14241700B21C93 /* PickDinnerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A515D3812A14241700B21C93 /* PickDinnerButton.swift */; };
 		A5E4E0F62A16C1F100C0EDFC /* StartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E4E0F52A16C1F100C0EDFC /* StartButton.swift */; };
-		A5E4E0F92A16CEF300C0EDFC /* RestaurantOrFastFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E4E0F82A16CEF300C0EDFC /* RestaurantOrFastFood.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +32,6 @@
 		A515D37F2A141D9700B21C93 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		A515D3812A14241700B21C93 /* PickDinnerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickDinnerButton.swift; sourceTree = "<group>"; };
 		A5E4E0F52A16C1F100C0EDFC /* StartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartButton.swift; sourceTree = "<group>"; };
-		A5E4E0F82A16CEF300C0EDFC /* RestaurantOrFastFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantOrFastFood.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +99,6 @@
 				A515D37F2A141D9700B21C93 /* TitleLabel.swift */,
 				A515D3812A14241700B21C93 /* PickDinnerButton.swift */,
 				A515D37C2A13E62700B21C93 /* PickerView.swift */,
-				A5E4E0F82A16CEF300C0EDFC /* RestaurantOrFastFood.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -192,7 +189,6 @@
 				A515D37D2A13E62700B21C93 /* PickerView.swift in Sources */,
 				A5E4E0F62A16C1F100C0EDFC /* StartButton.swift in Sources */,
 				A515D37A2A12C0DB00B21C93 /* StartViewController.swift in Sources */,
-				A5E4E0F92A16CEF300C0EDFC /* RestaurantOrFastFood.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
