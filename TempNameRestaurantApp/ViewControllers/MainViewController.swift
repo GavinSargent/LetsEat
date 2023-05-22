@@ -20,6 +20,8 @@ class MainViewController: UIViewController {
     
     let stackView = UIStackView()
     
+    var currentLocation: CLLocation? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,65 +42,10 @@ class MainViewController: UIViewController {
         distancePickerView.dataSource = self
     }
     
-    private func configureViews () {
+    @objc func pickMeal () {
+//        requestAllowLocationOnce()
+        print(currentLocation!.coordinate)
         
-        let mainTitleLabel = TitleLabel()
-        
-        
-        //        stackView.spacing = 10
-        stackView.distribution = .equalSpacing
-        stackView.spacing = 0
-        stackView.axis = .vertical
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(stackView)
-        
-        NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5),
-            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
-        ])
-        
-        stackView.addArrangedSubview(mainTitleLabel)
-        stackView.addArrangedSubview(foodPickerView)
-//        configureDistanceCategoryLabelView()
-        stackView.addArrangedSubview(distancePickerView)
-        configureSitOrGoSegControlView()
-        configureDinnerButtonView()
-    }
-    
-    func configureDinnerButtonView () {
-        
-        let pickDinnerButton = PickMealButton()
-        let buttonView = UIView()
-        
-        stackView.addArrangedSubview(buttonView)
-        
-        buttonView.addSubview(pickDinnerButton)
-        
-        NSLayoutConstraint.activate([
-            pickDinnerButton.centerXAnchor.constraint(equalTo: buttonView.centerXAnchor),
-            pickDinnerButton.centerYAnchor.constraint(equalTo: buttonView.centerYAnchor)
-        ])
-    }
-    
-    func configureSitOrGoSegControlView (){
-        let items = ["Restaurant", "Fast Food"]
-        let segmentedControl = UISegmentedControl(items: items)
-        segmentedControl.selectedSegmentTintColor = .systemBlue
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        
-        stackView.addArrangedSubview(segmentedControl)
-        
-        NSLayoutConstraint.activate([
-            segmentedControl.heightAnchor.constraint(greaterThanOrEqualToConstant: 20)
-        ])
-    }
-    
-    func configureDistanceCategoryLabelView () {
-        let distanceLabel = CategoryLabel(title: "Distance From Me (mi)")
-        stackView.addArrangedSubview(distanceLabel)
     }
     
 }
@@ -142,7 +89,12 @@ extension MainViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 extension MainViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
-
+        currentLocation = location
+        return
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error.localizedDescription)
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -150,7 +102,7 @@ extension MainViewController: CLLocationManagerDelegate {
         case .restricted, .denied:
             createAlert()
         case .authorizedWhenInUse, .authorizedAlways:
-            //app will be able to function as intended
+            manager.requestLocation()
             break
         case .notDetermined:
             manager.requestWhenInUseAuthorization()
@@ -158,7 +110,11 @@ extension MainViewController: CLLocationManagerDelegate {
             break
         }
     }
-
+//
+//    func requestAllowLocationOnce () {
+//        locationManager.requestLocation()
+//    }
+    
     func createAlert () {
         let alert = UIAlertController(title: "Location Services Not Allowed", message: "Location services have been blocked for this app. To allow location service go to Settings>TempRestaurantAppName>Location> While Using the App ", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
@@ -168,6 +124,68 @@ extension MainViewController: CLLocationManagerDelegate {
     }
 }
 
+//MARK: - Configuring Views
 
+extension MainViewController {
+    
+    private func configureViews () {
+        
+        let mainTitleLabel = TitleLabel()
+        
+        
+        //        stackView.spacing = 10
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 0
+        stackView.axis = .vertical
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(stackView)
+        
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5),
+            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+        ])
+        
+        stackView.addArrangedSubview(mainTitleLabel)
+        stackView.addArrangedSubview(foodPickerView)
+//        configureDistanceCategoryLabelView()
+        stackView.addArrangedSubview(distancePickerView)
+        configureSitOrGoSegControlView()
+        configureDinnerButtonView()
+    }
+    
+    func configureDinnerButtonView () {
+        
+        let pickMealButton = PickMealButton()
+      
+        stackView.addArrangedSubview(pickMealButton)
+        
+//        NSLayoutConstraint.activate([
+//            pickMealButton.widthAnchor.constraint(equalToConstant: 150)
+//        ])
+        
+        pickMealButton.addTarget(self, action: #selector(pickMeal), for: .touchUpInside)
+    }
+    
+    func configureSitOrGoSegControlView (){
+        let items = ["Restaurant", "Fast Food"]
+        let segmentedControl = UISegmentedControl(items: items)
+        segmentedControl.selectedSegmentTintColor = .systemBlue
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        
+        stackView.addArrangedSubview(segmentedControl)
+        
+        NSLayoutConstraint.activate([
+            segmentedControl.heightAnchor.constraint(greaterThanOrEqualToConstant: 20)
+        ])
+    }
+    
+    func configureDistanceCategoryLabelView () {
+        let distanceLabel = CategoryLabel(title: "Distance From Me (mi)")
+        stackView.addArrangedSubview(distanceLabel)
+    }
+}
 
 
