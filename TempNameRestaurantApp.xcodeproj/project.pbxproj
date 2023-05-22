@@ -15,7 +15,8 @@
 		A515D37A2A12C0DB00B21C93 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A515D3792A12C0DB00B21C93 /* StartViewController.swift */; };
 		A515D37D2A13E62700B21C93 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A515D37C2A13E62700B21C93 /* PickerView.swift */; };
 		A515D3802A141D9700B21C93 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A515D37F2A141D9700B21C93 /* TitleLabel.swift */; };
-		A515D3822A14241700B21C93 /* PickDinnerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A515D3812A14241700B21C93 /* PickDinnerButton.swift */; };
+		A515D3822A14241700B21C93 /* PickMealButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A515D3812A14241700B21C93 /* PickMealButton.swift */; };
+		A5B257852A17F77500666FBB /* CategoryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B257842A17F77500666FBB /* CategoryLabel.swift */; };
 		A5E4E0F62A16C1F100C0EDFC /* StartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E4E0F52A16C1F100C0EDFC /* StartButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +31,8 @@
 		A515D3792A12C0DB00B21C93 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		A515D37C2A13E62700B21C93 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		A515D37F2A141D9700B21C93 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
-		A515D3812A14241700B21C93 /* PickDinnerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickDinnerButton.swift; sourceTree = "<group>"; };
+		A515D3812A14241700B21C93 /* PickMealButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickMealButton.swift; sourceTree = "<group>"; };
+		A5B257842A17F77500666FBB /* CategoryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryLabel.swift; sourceTree = "<group>"; };
 		A5E4E0F52A16C1F100C0EDFC /* StartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,8 +99,9 @@
 			isa = PBXGroup;
 			children = (
 				A515D37F2A141D9700B21C93 /* TitleLabel.swift */,
-				A515D3812A14241700B21C93 /* PickDinnerButton.swift */,
+				A515D3812A14241700B21C93 /* PickMealButton.swift */,
 				A515D37C2A13E62700B21C93 /* PickerView.swift */,
+				A5B257842A17F77500666FBB /* CategoryLabel.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -181,7 +184,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A515D3822A14241700B21C93 /* PickDinnerButton.swift in Sources */,
+				A5B257852A17F77500666FBB /* CategoryLabel.swift in Sources */,
+				A515D3822A14241700B21C93 /* PickMealButton.swift in Sources */,
 				A515D36A2A12C0A400B21C93 /* MainViewController.swift in Sources */,
 				A515D3662A12C0A400B21C93 /* AppDelegate.swift in Sources */,
 				A515D3682A12C0A400B21C93 /* SceneDelegate.swift in Sources */,

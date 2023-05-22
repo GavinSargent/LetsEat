@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PickDinnerButton: UIButton {
+class PickMealButton: UIButton {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -18,7 +18,7 @@ class PickDinnerButton: UIButton {
         configuration = .tinted()
         configuration?.baseBackgroundColor = .systemBlue
         configuration?.baseForegroundColor = .systemBlue
-        configuration?.title = "Pick Dinner"
+        configuration?.title = "Pick Meal"
         configuration?.cornerStyle = .capsule
         configuration?.buttonSize = .large
         translatesAutoresizingMaskIntoConstraints = false

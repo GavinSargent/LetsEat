@@ -13,10 +13,10 @@ class MainViewController: UIViewController {
     let locationManager = CLLocationManager()
     
     let typesOfFood: [String] = ["Mexican", "American", "Asian", "Italian", "Greek", "Indian"]
-    let price: [String] = ["$", "$$", "$$$", "$$$$"]
+    let distance: [String] = ["5 miles", "10 miles", "25 miles", "50 miles"]
     
     let foodPickerView = PickerView(tag: 0)
-    let pricePickerView = PickerView(tag: 1)
+    let distancePickerView = PickerView(tag: 1)
     
     let stackView = UIStackView()
     
@@ -36,8 +36,8 @@ class MainViewController: UIViewController {
         foodPickerView.delegate = self
         foodPickerView.dataSource = self
         
-        pricePickerView.delegate = self
-        pricePickerView.dataSource = self
+        distancePickerView.delegate = self
+        distancePickerView.dataSource = self
     }
     
     private func configureViews () {
@@ -47,7 +47,7 @@ class MainViewController: UIViewController {
         
         //        stackView.spacing = 10
         stackView.distribution = .equalSpacing
-        stackView.spacing = 5
+        stackView.spacing = 0
         stackView.axis = .vertical
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -62,15 +62,15 @@ class MainViewController: UIViewController {
         
         stackView.addArrangedSubview(mainTitleLabel)
         stackView.addArrangedSubview(foodPickerView)
-        stackView.addArrangedSubview(pricePickerView)
-        
+//        configureDistanceCategoryLabelView()
+        stackView.addArrangedSubview(distancePickerView)
         configureSitOrGoSegControlView()
         configureDinnerButtonView()
     }
     
     func configureDinnerButtonView () {
         
-        let pickDinnerButton = PickDinnerButton()
+        let pickDinnerButton = PickMealButton()
         let buttonView = UIView()
         
         stackView.addArrangedSubview(buttonView)
@@ -96,29 +96,46 @@ class MainViewController: UIViewController {
         ])
     }
     
+    func configureDistanceCategoryLabelView () {
+        let distanceLabel = CategoryLabel(title: "Distance From Me (mi)")
+        stackView.addArrangedSubview(distanceLabel)
+    }
     
 }
 
 //MARK: - PickerView Delegate/Data Source
 extension MainViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        if pickerView.tag == 0 {
+            return 1
+        } else {
+            return 2
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView.tag == 0 {
-            return typesOfFood[row]
-        } else{
-            return price[row]
+        if component == 0 && pickerView.tag == 1 {
+            return "Within:"
+        } else {
+            if pickerView.tag == 0 {
+                return typesOfFood[row]
+            } else {
+                return distance[row]
+            }
         }
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView.tag == 0 {
-            return typesOfFood.count
+        if component == 0 && pickerView.tag == 1 {
+            return 1
         } else {
-            return price.count
+            if pickerView.tag == 0 {
+                return typesOfFood.count
+            } else {
+                return distance.count
+            }
         }
     }
+    
 }
 
 //MARK: - Location Manager Delegate
@@ -131,8 +148,7 @@ extension MainViewController: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch locationManager.authorizationStatus {
         case .restricted, .denied:
-            //send an alert stating that location services are disabled and how to fix that Setting > General > ...
-            break
+            createAlert()
         case .authorizedWhenInUse, .authorizedAlways:
             //app will be able to function as intended
             break
@@ -143,4 +159,15 @@ extension MainViewController: CLLocationManagerDelegate {
         }
     }
 
+    func createAlert () {
+        let alert = UIAlertController(title: "Location Services Not Allowed", message: "Location services have been blocked for this app. To allow location service go to Settings>TempRestaurantAppName>Location> While Using the App ", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+        NSLog("The \"OK\" alert occured.")
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
+
+
+
+

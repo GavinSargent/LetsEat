@@ -15,9 +15,9 @@ class StartButton: UIButton {
     }
     
     private func configureButton() {
-        configuration = .filled()
-        configuration?.baseBackgroundColor = UIColor(named: "systemCyan")
-        configuration?.baseForegroundColor = .black
+        configuration = .tinted()
+        configuration?.baseBackgroundColor = .systemBlue
+        configuration?.baseForegroundColor = .systemBlue
         configuration?.title = "Begin"
         configuration?.cornerStyle = .capsule
         
