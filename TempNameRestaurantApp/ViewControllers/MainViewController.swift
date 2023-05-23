@@ -24,6 +24,7 @@ class MainViewController: UIViewController {
     var selectedDistance: Int = 5
     var selectedDistanceMeters = 0
     var selectedFood = "Mexican"
+    var selectedSitOrGo = "Restaurant"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +58,7 @@ class MainViewController: UIViewController {
             selectedDistanceMeters = 8046
         }
 
-        
+        print(selectedDistanceMeters, selectedFood, selectedSitOrGo)
     }
     
 }
@@ -226,6 +227,19 @@ extension MainViewController {
         NSLayoutConstraint.activate([
             segmentedControl.heightAnchor.constraint(greaterThanOrEqualToConstant: 20)
         ])
+        
+        segmentedControl.addTarget(self, action: #selector(sitOrGoControlDidChange(_:)), for: .valueChanged)
+    }
+    
+    @objc func sitOrGoControlDidChange (_ segmentedControl: UISegmentedControl) {
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            selectedSitOrGo = "Restaurant"
+        case 1:
+            selectedSitOrGo = "Fast Food"
+        default:
+            selectedSitOrGo = "Restaurant"
+        }
     }
     
     func configureDistanceCategoryLabelView () {
