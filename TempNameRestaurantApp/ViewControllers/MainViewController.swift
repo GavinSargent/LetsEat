@@ -22,6 +22,8 @@ class MainViewController: UIViewController {
     
     var currentLocation: CLLocation? = nil
     var selectedDistance: Int = 5
+    var selectedDistanceMeters = 0
+    var selectedFood = "Mexican"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,13 +46,18 @@ class MainViewController: UIViewController {
     }
     
     @objc func pickMeal () {
-//        switch <#value#> {
-//        case <#pattern#>:
-//            <#code#>
-//        default:
-//            <#code#>
-//        }
-        print(selectedDistance)
+        switch selectedDistance {
+        case 5:
+            selectedDistanceMeters = 8046
+        case 10:
+            selectedDistanceMeters = 16093
+        case 25:
+            selectedDistanceMeters = 40233
+        default:
+            selectedDistanceMeters = 8046
+        }
+
+        
     }
     
 }
@@ -89,16 +96,35 @@ extension MainViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if component == 1 {
+        if pickerView.tag == 1 {
+            if component == 1 {
+                switch row {
+                case 0:
+                    selectedDistance = 5
+                case 1:
+                    selectedDistance = 10
+                case 2:
+                    selectedDistance = 25
+                default:
+                    return
+                }
+            }
+        } else if pickerView.tag == 0 {
             switch row {
             case 0:
-                selectedDistance = 5
+                selectedFood = "Mexican"
             case 1:
-                selectedDistance = 10
+                selectedFood = "American"
             case 2:
-                selectedDistance = 25
+                selectedFood = "Asian"
+            case 3:
+                selectedFood = "Italian"
+            case 4:
+                selectedFood = "Greek"
+            case 5:
+                selectedFood = "Indian"
             default:
-                selectedDistance = 5
+                return
             }
         }
     }
