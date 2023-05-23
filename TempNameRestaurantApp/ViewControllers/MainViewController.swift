@@ -13,7 +13,7 @@ class MainViewController: UIViewController {
     let locationManager = CLLocationManager()
     
     let typesOfFood: [String] = ["Mexican", "American", "Asian", "Italian", "Greek", "Indian"]
-    let distance: [String] = ["5 miles", "10 miles", "25 miles", "50 miles"]
+    let distance: [String] = ["5 miles", "10 miles", "25 miles"]
     
     let foodPickerView = PickerView(tag: 0)
     let distancePickerView = PickerView(tag: 1)
@@ -21,6 +21,7 @@ class MainViewController: UIViewController {
     let stackView = UIStackView()
     
     var currentLocation: CLLocation? = nil
+    var selectedDistance: Int = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,9 +44,13 @@ class MainViewController: UIViewController {
     }
     
     @objc func pickMeal () {
-//        requestAllowLocationOnce()
-        print(currentLocation!.coordinate)
-        
+//        switch <#value#> {
+//        case <#pattern#>:
+//            <#code#>
+//        default:
+//            <#code#>
+//        }
+        print(selectedDistance)
     }
     
 }
@@ -79,6 +84,21 @@ extension MainViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                 return typesOfFood.count
             } else {
                 return distance.count
+            }
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if component == 1 {
+            switch row {
+            case 0:
+                selectedDistance = 5
+            case 1:
+                selectedDistance = 10
+            case 2:
+                selectedDistance = 25
+            default:
+                selectedDistance = 5
             }
         }
     }
@@ -188,4 +208,11 @@ extension MainViewController {
     }
 }
 
+//MARK: - Map Query
+
+extension MainViewController {
+//    func mapQuery (){
+//        let mapQuery = MKLocalPointsOfInterestRequest(center: currentLocation?.coordinate, radius: <#T##CLLocationDistance#>)
+//    }
+}
 
