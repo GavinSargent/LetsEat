@@ -17,6 +17,9 @@
 		A515D3802A141D9700B21C93 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A515D37F2A141D9700B21C93 /* TitleLabel.swift */; };
 		A515D3822A14241700B21C93 /* PickMealButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A515D3812A14241700B21C93 /* PickMealButton.swift */; };
 		A5B257852A17F77500666FBB /* CategoryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B257842A17F77500666FBB /* CategoryLabel.swift */; };
+		A5B257892A1D2F8400666FBB /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B257882A1D2F8400666FBB /* ResultViewController.swift */; };
+		A5B2578C2A1D305C00666FBB /* ResultInfoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B2578B2A1D305C00666FBB /* ResultInfoLabel.swift */; };
+		A5B2578E2A1D30C300666FBB /* TakeMeThereButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B2578D2A1D30C300666FBB /* TakeMeThereButton.swift */; };
 		A5E4E0F62A16C1F100C0EDFC /* StartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E4E0F52A16C1F100C0EDFC /* StartButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +36,9 @@
 		A515D37F2A141D9700B21C93 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		A515D3812A14241700B21C93 /* PickMealButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickMealButton.swift; sourceTree = "<group>"; };
 		A5B257842A17F77500666FBB /* CategoryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryLabel.swift; sourceTree = "<group>"; };
+		A5B257882A1D2F8400666FBB /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		A5B2578B2A1D305C00666FBB /* ResultInfoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultInfoLabel.swift; sourceTree = "<group>"; };
+		A5B2578D2A1D30C300666FBB /* TakeMeThereButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeMeThereButton.swift; sourceTree = "<group>"; };
 		A5E4E0F52A16C1F100C0EDFC /* StartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +88,7 @@
 			children = (
 				A515D3692A12C0A400B21C93 /* MainViewController.swift */,
 				A515D3792A12C0DB00B21C93 /* StartViewController.swift */,
+				A5B257882A1D2F8400666FBB /* ResultViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -89,10 +96,20 @@
 		A515D37E2A13E63300B21C93 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
+				A5B2578A2A1D303200666FBB /* ResultView */,
 				A5E4E0F42A16C1A200C0EDFC /* MainView */,
 				A5E4E0F72A16C1F600C0EDFC /* StartView */,
 			);
 			path = Elements;
+			sourceTree = "<group>";
+		};
+		A5B2578A2A1D303200666FBB /* ResultView */ = {
+			isa = PBXGroup;
+			children = (
+				A5B2578B2A1D305C00666FBB /* ResultInfoLabel.swift */,
+				A5B2578D2A1D30C300666FBB /* TakeMeThereButton.swift */,
+			);
+			path = ResultView;
 			sourceTree = "<group>";
 		};
 		A5E4E0F42A16C1A200C0EDFC /* MainView */ = {
@@ -185,10 +202,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5B257852A17F77500666FBB /* CategoryLabel.swift in Sources */,
+				A5B2578C2A1D305C00666FBB /* ResultInfoLabel.swift in Sources */,
 				A515D3822A14241700B21C93 /* PickMealButton.swift in Sources */,
 				A515D36A2A12C0A400B21C93 /* MainViewController.swift in Sources */,
 				A515D3662A12C0A400B21C93 /* AppDelegate.swift in Sources */,
+				A5B2578E2A1D30C300666FBB /* TakeMeThereButton.swift in Sources */,
 				A515D3682A12C0A400B21C93 /* SceneDelegate.swift in Sources */,
+				A5B257892A1D2F8400666FBB /* ResultViewController.swift in Sources */,
 				A515D3802A141D9700B21C93 /* TitleLabel.swift in Sources */,
 				A515D37D2A13E62700B21C93 /* PickerView.swift in Sources */,
 				A5E4E0F62A16C1F100C0EDFC /* StartButton.swift in Sources */,

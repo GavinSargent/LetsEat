@@ -22,9 +22,10 @@ class MainViewController: UIViewController {
     
     var currentLocation: CLLocation? = nil
     var selectedDistance: Int = 5
-    var selectedDistanceMeters = 0
+    var selectedDistanceMeters: Double = 8046.00
     var selectedFood = "Mexican"
     var selectedSitOrGo = "Restaurant"
+    var randomRestaurant: MKMapItem? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,18 +48,9 @@ class MainViewController: UIViewController {
     }
     
     @objc func pickMeal () {
-        switch selectedDistance {
-        case 5:
-            selectedDistanceMeters = 8046
-        case 10:
-            selectedDistanceMeters = 16093
-        case 25:
-            selectedDistanceMeters = 40233
-        default:
-            selectedDistanceMeters = 8046
-        }
 
-        print(selectedDistanceMeters, selectedFood, selectedSitOrGo)
+        mapQuery()
+        
     }
     
 }
@@ -102,10 +94,13 @@ extension MainViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                 switch row {
                 case 0:
                     selectedDistance = 5
+                    selectedDistanceMeters = 8046.00
                 case 1:
                     selectedDistance = 10
+                    selectedDistanceMeters = 16093.00
                 case 2:
                     selectedDistance = 25
+                    selectedDistanceMeters = 40233.00
                 default:
                     return
                 }
@@ -251,8 +246,39 @@ extension MainViewController {
 //MARK: - Map Query
 
 extension MainViewController {
-//    func mapQuery (){
-//        let mapQuery = MKLocalPointsOfInterestRequest(center: currentLocation?.coordinate, radius: <#T##CLLocationDistance#>)
-//    }
+    func mapQuery (){
+
+        let pointOfInterestFilter = MKPointOfInterestFilter(including: [MKPointOfInterestCategory.restaurant])
+        let searchRequest = MKLocalSearch.Request()
+        searchRequest.pointOfInterestFilter = pointOfInterestFilter
+        searchRequest.naturalLanguageQuery = "\(selectedFood), \(selectedSitOrGo)"
+        
+        searchRequest.region = createRegion()
+        
+        let search = MKLocalSearch(request: searchRequest)
+        search.start { (response, error) in
+            guard let response = response else {
+                print(error!)
+                return
+            }
+            
+            if response.mapItems.count > 0 {
+                let shuffledItemsArray = response.mapItems.shuffled()
+                self.randomRestaurant = shuffledItemsArray[0]
+                print(self.randomRestaurant!)
+            } else {
+                
+            }
+        }
+    }
+                     
+    func createRegion () -> MKCoordinateRegion{
+        let center = CLLocationCoordinate2D(latitude: (currentLocation?.coordinate.latitude)!, longitude: (currentLocation?.coordinate.longitude)!)
+        
+        let region = MKCoordinateRegion(center: center, latitudinalMeters: selectedDistanceMeters, longitudinalMeters: selectedDistanceMeters)
+        
+        return region
+    }
+
 }
 
