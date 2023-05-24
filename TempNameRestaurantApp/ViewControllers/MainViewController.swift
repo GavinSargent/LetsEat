@@ -10,23 +10,17 @@ import MapKit
 import CoreLocation
 
 class MainViewController: UIViewController {
-    let locationManager = CLLocationManager()
     
-    let typesOfFood: [String] = ["Mexican", "American", "Asian", "Italian", "Greek", "Indian"]
-    let distance: [String] = ["5 miles", "10 miles", "25 miles"]
+    let locationManager = LocationManager()
     
     let foodPickerView = PickerView(tag: 0)
     let distancePickerView = PickerView(tag: 1)
     
     let stackView = UIStackView()
     
-    var currentLocation: CLLocation? = nil
-    var selectedDistance: Int = 5
-    var selectedDistanceMeters: Double = 8046.00
-    var selectedFood = "Mexican"
-    var selectedSitOrGo = "Restaurant"
-    var randomRestaurant: MKMapItem? = nil
-    
+    var restaurantName = ""
+    var restaurantNumber = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,11 +28,11 @@ class MainViewController: UIViewController {
         
         configureViewController()
         configureViews()
-        
     }
+
     
     private func configureViewController () {
-        locationManager.delegate = self
+        
         
         foodPickerView.delegate = self
         foodPickerView.dataSource = self
@@ -49,8 +43,19 @@ class MainViewController: UIViewController {
     
     @objc func pickMeal () {
 
-        mapQuery()
         
+        locationManager.mapQuery(){ result in
+            switch result {
+            case .success(let restaurants):
+                let randomRestaurant =  restaurants.randomElement()
+                self.restaurantName = (randomRestaurant?.name)!
+                self.restaurantNumber = (randomRestaurant?.phoneNumber)!
+                self.beginResultViewController()
+            case .failure(_):
+                self.createNoResultAlert()
+            }
+        }
+ 
     }
     
 }
@@ -70,9 +75,9 @@ extension MainViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             return "Within:"
         } else {
             if pickerView.tag == 0 {
-                return typesOfFood[row]
+                return Constants.typesOfFood[row]
             } else {
-                return distance[row]
+                return Constants.distance[row]
             }
         }
     }
@@ -81,9 +86,9 @@ extension MainViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             return 1
         } else {
             if pickerView.tag == 0 {
-                return typesOfFood.count
+                return Constants.typesOfFood.count
             } else {
-                return distance.count
+                return Constants.distance.count
             }
         }
     }
@@ -93,14 +98,14 @@ extension MainViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             if component == 1 {
                 switch row {
                 case 0:
-                    selectedDistance = 5
-                    selectedDistanceMeters = 8046.00
+                    locationManager.selectedDistance = 5
+                    locationManager.selectedDistanceMeters = 8046.00
                 case 1:
-                    selectedDistance = 10
-                    selectedDistanceMeters = 16093.00
+                    locationManager.selectedDistance = 10
+                    locationManager.selectedDistanceMeters = 16093.00
                 case 2:
-                    selectedDistance = 25
-                    selectedDistanceMeters = 40233.00
+                    locationManager.selectedDistance = 25
+                    locationManager.selectedDistanceMeters = 40233.00
                 default:
                     return
                 }
@@ -108,62 +113,23 @@ extension MainViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         } else if pickerView.tag == 0 {
             switch row {
             case 0:
-                selectedFood = "Mexican"
+                locationManager.selectedFood = "Mexican"
             case 1:
-                selectedFood = "American"
+                locationManager.selectedFood = "American"
             case 2:
-                selectedFood = "Asian"
+                locationManager.selectedFood = "Asian"
             case 3:
-                selectedFood = "Italian"
+                locationManager.selectedFood = "Italian"
             case 4:
-                selectedFood = "Greek"
+                locationManager.selectedFood = "Greek"
             case 5:
-                selectedFood = "Indian"
+                locationManager.selectedFood = "Indian"
             default:
                 return
             }
         }
     }
     
-}
-
-//MARK: - Location Manager Delegate
-extension MainViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
-        currentLocation = location
-        return
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error.localizedDescription)
-    }
-    
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        switch locationManager.authorizationStatus {
-        case .restricted, .denied:
-            createAlert()
-        case .authorizedWhenInUse, .authorizedAlways:
-            manager.requestLocation()
-            break
-        case .notDetermined:
-            manager.requestWhenInUseAuthorization()
-        @unknown default:
-            break
-        }
-    }
-//
-//    func requestAllowLocationOnce () {
-//        locationManager.requestLocation()
-//    }
-    
-    func createAlert () {
-        let alert = UIAlertController(title: "Location Services Not Allowed", message: "Location services have been blocked for this app. To allow location service go to Settings>TempRestaurantAppName>Location> While Using the App ", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-        NSLog("The \"OK\" alert occured.")
-        }))
-        self.present(alert, animated: true, completion: nil)
-    }
 }
 
 //MARK: - Configuring Views
@@ -174,8 +140,6 @@ extension MainViewController {
         
         let mainTitleLabel = TitleLabel()
         
-        
-        //        stackView.spacing = 10
         stackView.distribution = .equalSpacing
         stackView.spacing = 0
         stackView.axis = .vertical
@@ -192,7 +156,6 @@ extension MainViewController {
         
         stackView.addArrangedSubview(mainTitleLabel)
         stackView.addArrangedSubview(foodPickerView)
-//        configureDistanceCategoryLabelView()
         stackView.addArrangedSubview(distancePickerView)
         configureSitOrGoSegControlView()
         configureDinnerButtonView()
@@ -203,10 +166,6 @@ extension MainViewController {
         let pickMealButton = PickMealButton()
       
         stackView.addArrangedSubview(pickMealButton)
-        
-//        NSLayoutConstraint.activate([
-//            pickMealButton.widthAnchor.constraint(equalToConstant: 150)
-//        ])
         
         pickMealButton.addTarget(self, action: #selector(pickMeal), for: .touchUpInside)
     }
@@ -229,56 +188,37 @@ extension MainViewController {
     @objc func sitOrGoControlDidChange (_ segmentedControl: UISegmentedControl) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            selectedSitOrGo = "Restaurant"
+            locationManager.selectedSitOrGo = "Restaurant"
         case 1:
-            selectedSitOrGo = "Fast Food"
+            locationManager.selectedSitOrGo = "Fast Food"
         default:
-            selectedSitOrGo = "Restaurant"
+            locationManager.selectedSitOrGo = "Restaurant"
         }
     }
     
-    func configureDistanceCategoryLabelView () {
-        let distanceLabel = CategoryLabel(title: "Distance From Me (mi)")
-        stackView.addArrangedSubview(distanceLabel)
+    func beginResultViewController () {
+        let resultScreen = ResultViewController()
+        resultScreen.restaurantName = restaurantName
+        resultScreen.restaurantNumber = restaurantNumber
+        navigationController?.pushViewController(resultScreen, animated: true)
     }
 }
 
-//MARK: - Map Query
-
+//MARK: - Alerts
 extension MainViewController {
-    func mapQuery (){
-
-        let pointOfInterestFilter = MKPointOfInterestFilter(including: [MKPointOfInterestCategory.restaurant])
-        let searchRequest = MKLocalSearch.Request()
-        searchRequest.pointOfInterestFilter = pointOfInterestFilter
-        searchRequest.naturalLanguageQuery = "\(selectedFood), \(selectedSitOrGo)"
-        
-        searchRequest.region = createRegion()
-        
-        let search = MKLocalSearch(request: searchRequest)
-        search.start { (response, error) in
-            guard let response = response else {
-                print(error!)
-                return
-            }
-            
-            if response.mapItems.count > 0 {
-                let shuffledItemsArray = response.mapItems.shuffled()
-                self.randomRestaurant = shuffledItemsArray[0]
-                print(self.randomRestaurant!)
-            } else {
-                
-            }
-        }
-    }
-                     
-    func createRegion () -> MKCoordinateRegion{
-        let center = CLLocationCoordinate2D(latitude: (currentLocation?.coordinate.latitude)!, longitude: (currentLocation?.coordinate.longitude)!)
-        
-        let region = MKCoordinateRegion(center: center, latitudinalMeters: selectedDistanceMeters, longitudinalMeters: selectedDistanceMeters)
-        
-        return region
+    public func createLocationAlert () {
+        let alert = UIAlertController(title: "Location Services Not Allowed", message: "Location services have been blocked for this app. To allow location service go to Settings>TempRestaurantAppName>Location> While Using the App ", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+        NSLog("The \"OK\" alert occured.")
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 
+    public func createNoResultAlert () {
+        let alert = UIAlertController(title: "No Restaurants Found", message: "No restaurants matching your search could be found. Try changing one or more of the fields and try again.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+        NSLog("The \"OK\" alert occured.")
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
-

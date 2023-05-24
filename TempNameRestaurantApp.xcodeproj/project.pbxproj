@@ -20,6 +20,8 @@
 		A5B257892A1D2F8400666FBB /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B257882A1D2F8400666FBB /* ResultViewController.swift */; };
 		A5B2578C2A1D305C00666FBB /* ResultInfoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B2578B2A1D305C00666FBB /* ResultInfoLabel.swift */; };
 		A5B2578E2A1D30C300666FBB /* TakeMeThereButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B2578D2A1D30C300666FBB /* TakeMeThereButton.swift */; };
+		A5B257912A1E5E2F00666FBB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B257902A1E5E2F00666FBB /* LocationManager.swift */; };
+		A5B257942A1E6C3000666FBB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B257932A1E6C3000666FBB /* Constants.swift */; };
 		A5E4E0F62A16C1F100C0EDFC /* StartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E4E0F52A16C1F100C0EDFC /* StartButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,8 @@
 		A5B257882A1D2F8400666FBB /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		A5B2578B2A1D305C00666FBB /* ResultInfoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultInfoLabel.swift; sourceTree = "<group>"; };
 		A5B2578D2A1D30C300666FBB /* TakeMeThereButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeMeThereButton.swift; sourceTree = "<group>"; };
+		A5B257902A1E5E2F00666FBB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		A5B257932A1E6C3000666FBB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A5E4E0F52A16C1F100C0EDFC /* StartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,13 +76,11 @@
 		A515D3642A12C0A400B21C93 /* TempNameRestaurantApp */ = {
 			isa = PBXGroup;
 			children = (
-				A515D3652A12C0A400B21C93 /* AppDelegate.swift */,
-				A515D3672A12C0A400B21C93 /* SceneDelegate.swift */,
+				A515D3732A12C0A500B21C93 /* Info.plist */,
+				A5B2578F2A1E5DE700666FBB /* Model */,
 				A515D37E2A13E63300B21C93 /* Elements */,
 				A515D37B2A12D64400B21C93 /* ViewControllers */,
-				A515D36E2A12C0A500B21C93 /* Assets.xcassets */,
-				A515D3702A12C0A500B21C93 /* LaunchScreen.storyboard */,
-				A515D3732A12C0A500B21C93 /* Info.plist */,
+				A5B257922A1E5E3D00666FBB /* Support */,
 			);
 			path = TempNameRestaurantApp;
 			sourceTree = "<group>";
@@ -110,6 +112,26 @@
 				A5B2578D2A1D30C300666FBB /* TakeMeThereButton.swift */,
 			);
 			path = ResultView;
+			sourceTree = "<group>";
+		};
+		A5B2578F2A1E5DE700666FBB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A5B257902A1E5E2F00666FBB /* LocationManager.swift */,
+				A5B257932A1E6C3000666FBB /* Constants.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A5B257922A1E5E3D00666FBB /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				A515D3702A12C0A500B21C93 /* LaunchScreen.storyboard */,
+				A515D36E2A12C0A500B21C93 /* Assets.xcassets */,
+				A515D3672A12C0A400B21C93 /* SceneDelegate.swift */,
+				A515D3652A12C0A400B21C93 /* AppDelegate.swift */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 		A5E4E0F42A16C1A200C0EDFC /* MainView */ = {
@@ -201,6 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5B257912A1E5E2F00666FBB /* LocationManager.swift in Sources */,
 				A5B257852A17F77500666FBB /* CategoryLabel.swift in Sources */,
 				A5B2578C2A1D305C00666FBB /* ResultInfoLabel.swift in Sources */,
 				A515D3822A14241700B21C93 /* PickMealButton.swift in Sources */,
@@ -211,6 +234,7 @@
 				A5B257892A1D2F8400666FBB /* ResultViewController.swift in Sources */,
 				A515D3802A141D9700B21C93 /* TitleLabel.swift in Sources */,
 				A515D37D2A13E62700B21C93 /* PickerView.swift in Sources */,
+				A5B257942A1E6C3000666FBB /* Constants.swift in Sources */,
 				A5E4E0F62A16C1F100C0EDFC /* StartButton.swift in Sources */,
 				A515D37A2A12C0DB00B21C93 /* StartViewController.swift in Sources */,
 			);
