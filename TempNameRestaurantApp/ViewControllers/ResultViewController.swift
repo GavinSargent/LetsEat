@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import MapKit
 
 class ResultViewController: UIViewController {
     var restaurantName = ""
     var restaurantNumber = ""
+    var selectedRestaurant: MKMapItem? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,21 +33,29 @@ class ResultViewController: UIViewController {
         view.addSubview(phoneLabel)
         view.addSubview(takeMeThereButton)
         
+        nameLabel.sizeToFit()
+        phoneLabel.sizeToFit()
+        
         NSLayoutConstraint.activate([
             phoneLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            phoneLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            phoneLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20),
+            phoneLabel.heightAnchor.constraint(equalToConstant: 30),
             
-            nameLabel.bottomAnchor.constraint(equalTo: phoneLabel.topAnchor, constant: 15),
-            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
-            nameLabel.heightAnchor.constraint(equalToConstant: 15),
             
-            takeMeThereButton.topAnchor.constraint(equalTo: phoneLabel.bottomAnchor, constant: -15),
-            takeMeThereButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            takeMeThereButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
-            nameLabel.heightAnchor.constraint(equalToConstant: 20)
+            nameLabel.bottomAnchor.constraint(equalTo: phoneLabel.topAnchor, constant: -15),
+            nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            nameLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 30),
+            
+            takeMeThereButton.topAnchor.constraint(equalTo: phoneLabel.bottomAnchor, constant: 60),
+            takeMeThereButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            takeMeThereButton.heightAnchor.constraint(equalToConstant: 30)
         ])
         
+        takeMeThereButton.addTarget(self, action: #selector(takeMeThere), for: .touchUpInside)
+    }
+    
+    @objc func takeMeThere () {
+        selectedRestaurant?.openInMaps()
     }
 }
 

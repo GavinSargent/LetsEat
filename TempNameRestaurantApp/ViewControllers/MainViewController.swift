@@ -20,6 +20,7 @@ class MainViewController: UIViewController {
     
     var restaurantName = ""
     var restaurantNumber = ""
+    var selectedRestaurant: MKMapItem? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,7 @@ class MainViewController: UIViewController {
             switch result {
             case .success(let restaurants):
                 let randomRestaurant =  restaurants.randomElement()
+                self.selectedRestaurant = randomRestaurant
                 self.restaurantName = (randomRestaurant?.name)!
                 self.restaurantNumber = (randomRestaurant?.phoneNumber)!
                 self.beginResultViewController()
@@ -99,10 +101,10 @@ extension MainViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                 switch row {
                 case 0:
                     locationManager.selectedDistance = 5
-                    locationManager.selectedDistanceMeters = 8046.00
+                    locationManager.selectedDistanceMeters = 4046.00
                 case 1:
                     locationManager.selectedDistance = 10
-                    locationManager.selectedDistanceMeters = 16093.00
+                    locationManager.selectedDistanceMeters = 16093
                 case 2:
                     locationManager.selectedDistance = 25
                     locationManager.selectedDistanceMeters = 40233.00
@@ -200,6 +202,7 @@ extension MainViewController {
         let resultScreen = ResultViewController()
         resultScreen.restaurantName = restaurantName
         resultScreen.restaurantNumber = restaurantNumber
+        resultScreen.selectedRestaurant = selectedRestaurant!
         navigationController?.pushViewController(resultScreen, animated: true)
     }
 }

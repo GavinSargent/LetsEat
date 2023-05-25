@@ -14,7 +14,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
 //    static let sharedLM = LocationManager()
     
     var selectedDistance: Int = 5
-    var selectedDistanceMeters: Double = 8046.00
+    var selectedDistanceMeters: Double = 4046.00
     var selectedFood = "Mexican"
     var selectedSitOrGo = "Restaurant"
     var randomRestaurant: MKMapItem? = nil
