@@ -33,9 +33,6 @@ class ResultViewController: UIViewController {
         view.addSubview(phoneLabel)
         view.addSubview(takeMeThereButton)
         
-        nameLabel.sizeToFit()
-        phoneLabel.sizeToFit()
-        
         NSLayoutConstraint.activate([
             phoneLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             phoneLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20),
@@ -43,7 +40,8 @@ class ResultViewController: UIViewController {
             
             
             nameLabel.bottomAnchor.constraint(equalTo: phoneLabel.topAnchor, constant: -15),
-            nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             nameLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 30),
             
             takeMeThereButton.topAnchor.constraint(equalTo: phoneLabel.bottomAnchor, constant: 60),
@@ -51,6 +49,8 @@ class ResultViewController: UIViewController {
             takeMeThereButton.heightAnchor.constraint(equalToConstant: 30)
         ])
         
+        nameLabel.sizeToFit()
+        phoneLabel.sizeToFit()
         takeMeThereButton.addTarget(self, action: #selector(takeMeThere), for: .touchUpInside)
     }
     

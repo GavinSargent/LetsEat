@@ -23,8 +23,8 @@ class ResultInfoLabel: UILabel {
         textAlignment = .center
         translatesAutoresizingMaskIntoConstraints = false
         font = UIFont(name: "Times New Roman", size: 40)
+        numberOfLines = 2
         lineBreakMode = .byWordWrapping
-        numberOfLines = 0
     }
     
     convenience init(number:String) {

@@ -26,7 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A515D3622A12C0A400B21C93 /* TempNameRestaurantApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TempNameRestaurantApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A515D3622A12C0A400B21C93 /* Let'sEat!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Let'sEat!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A515D3652A12C0A400B21C93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A515D3672A12C0A400B21C93 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A515D3692A12C0A400B21C93 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 		A515D3592A12C0A400B21C93 = {
 			isa = PBXGroup;
 			children = (
-				A515D3642A12C0A400B21C93 /* TempNameRestaurantApp */,
+				A515D3642A12C0A400B21C93 /* Let'sEat! */,
 				A515D3632A12C0A400B21C93 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,12 +68,12 @@
 		A515D3632A12C0A400B21C93 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A515D3622A12C0A400B21C93 /* TempNameRestaurantApp.app */,
+				A515D3622A12C0A400B21C93 /* Let'sEat!.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A515D3642A12C0A400B21C93 /* TempNameRestaurantApp */ = {
+		A515D3642A12C0A400B21C93 /* Let'sEat! */ = {
 			isa = PBXGroup;
 			children = (
 				A515D3732A12C0A500B21C93 /* Info.plist */,
@@ -82,7 +82,7 @@
 				A515D37B2A12D64400B21C93 /* ViewControllers */,
 				A5B257922A1E5E3D00666FBB /* Support */,
 			);
-			path = TempNameRestaurantApp;
+			path = "Let'sEat!";
 			sourceTree = "<group>";
 		};
 		A515D37B2A12D64400B21C93 /* ViewControllers */ = {
@@ -156,9 +156,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A515D3612A12C0A400B21C93 /* TempNameRestaurantApp */ = {
+		A515D3612A12C0A400B21C93 /* Let'sEat! */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A515D3762A12C0A500B21C93 /* Build configuration list for PBXNativeTarget "TempNameRestaurantApp" */;
+			buildConfigurationList = A515D3762A12C0A500B21C93 /* Build configuration list for PBXNativeTarget "Let'sEat!" */;
 			buildPhases = (
 				A515D35E2A12C0A400B21C93 /* Sources */,
 				A515D35F2A12C0A400B21C93 /* Frameworks */,
@@ -168,9 +168,9 @@
 			);
 			dependencies = (
 			);
-			name = TempNameRestaurantApp;
+			name = "Let'sEat!";
 			productName = TempNameRestaurantApp;
-			productReference = A515D3622A12C0A400B21C93 /* TempNameRestaurantApp.app */;
+			productReference = A515D3622A12C0A400B21C93 /* Let'sEat!.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -188,7 +188,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A515D35D2A12C0A400B21C93 /* Build configuration list for PBXProject "TempNameRestaurantApp" */;
+			buildConfigurationList = A515D35D2A12C0A400B21C93 /* Build configuration list for PBXProject "Let'sEat!" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -201,7 +201,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A515D3612A12C0A400B21C93 /* TempNameRestaurantApp */,
+				A515D3612A12C0A400B21C93 /* Let'sEat! */,
 			);
 		};
 /* End PBXProject section */
@@ -377,7 +377,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PYJTS2FY9Z;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TempNameRestaurantApp/Info.plist;
+				INFOPLIST_FILE = "Let'sEat!/Info.plist";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location is used to find restaurants within 25 miles of the user's current location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -388,7 +388,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gavinsargent.TempNameRestaurantApp;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gavinsargent.Let-sEat-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -405,7 +405,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PYJTS2FY9Z;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TempNameRestaurantApp/Info.plist;
+				INFOPLIST_FILE = "Let'sEat!/Info.plist";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location is used to find restaurants within 25 miles of the user's current location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -416,7 +416,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gavinsargent.TempNameRestaurantApp;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gavinsargent.Let-sEat-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -427,7 +427,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A515D35D2A12C0A400B21C93 /* Build configuration list for PBXProject "TempNameRestaurantApp" */ = {
+		A515D35D2A12C0A400B21C93 /* Build configuration list for PBXProject "Let'sEat!" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A515D3742A12C0A500B21C93 /* Debug */,
@@ -436,7 +436,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A515D3762A12C0A500B21C93 /* Build configuration list for PBXNativeTarget "TempNameRestaurantApp" */ = {
+		A515D3762A12C0A500B21C93 /* Build configuration list for PBXNativeTarget "Let'sEat!" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A515D3772A12C0A500B21C93 /* Debug */,
