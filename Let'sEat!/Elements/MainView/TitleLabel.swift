@@ -18,7 +18,7 @@ class TitleLabel: UILabel {
     }
     
     func configureTitleLabel () {
-        text = "Restaurant Picker"
+        text = "Let's Eat!"
         textAlignment = .center
         translatesAutoresizingMaskIntoConstraints = false
         font = UIFont(name: "Times New Roman", size: 40)
