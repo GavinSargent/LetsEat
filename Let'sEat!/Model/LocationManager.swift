@@ -28,6 +28,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         locationManager.delegate = self
     }
     
+    // creates the location from the users last updated location
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
         currentLocation = location
@@ -37,6 +39,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error.localizedDescription)
     }
+    
+    // makes sure the user has allowed location services
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch locationManager.authorizationStatus {
@@ -56,6 +60,9 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
 
 //MARK: - Map Query
 extension LocationManager {
+    
+    //queries the Apple Map to find a restaurant based on inputted criteria
+    
     func mapQuery (completionHandler: @escaping (Result<[MKMapItem], Error>) -> Void){
 
         let pointOfInterestFilter = MKPointOfInterestFilter(including: [MKPointOfInterestCategory.restaurant])
@@ -77,7 +84,7 @@ extension LocationManager {
         }
     }
       
-
+// Make the location based off of phone current location
     
     func createRegion () -> MKCoordinateRegion{
         let center = CLLocationCoordinate2D(latitude: (currentLocation?.coordinate.latitude)!, longitude: (currentLocation?.coordinate.longitude)!)
